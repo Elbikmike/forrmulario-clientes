@@ -1,0 +1,55 @@
+<div style="max-width: 400px; margin: 50px auto; font-family: Arial, sans-serif;">
+  <h2 style="color: #2c3e50;">Registro de Clientes</h2>
+  
+  <form [formGroup]="formCliente" (ngSubmit)="enviar()">
+    <div style="margin-bottom: 15px;">
+      <label>Nombre:</label><br>
+      <input type="text" formControlName="nombre" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label>Apellido:</label><br>
+      <input type="text" formControlName="apellido" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label>Teléfono:</label><br>
+      <input type="text" formControlName="telefono" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label>Correo Electrónico:</label><br>
+      <input type="email" formControlName="correo" style="width: 100%; padding: 8px;">
+    </div>
+
+    <button type="submit" 
+            [disabled]="formCliente.invalid"
+            style="background: #27ae60; color: white; border: none; padding: 10px 20px; cursor: pointer; width: 100%;">
+      Guardar en MySQL
+    </button>
+  </form>
+</div>
+
+<hr>
+<h3>Lista de Clientes Registrados</h3>
+
+<table border="1" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of listaClientes">
+      <td>{{ c.id_cliente }}</td>
+      <td>{{ c.nombre }}</td>
+      <td>{{ c.apellido }}</td>
+      <td>{{ c.telefono }}</td>
+      <td>{{ c.correo }}</td>
+    </tr>
+  </tbody>
+</table>
